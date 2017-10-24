@@ -36,6 +36,9 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PrintWriter out = response.getWriter();
+		
+		String user = (String) request.getParameter("name");
+		request.setAttribute("user", user);
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 	}
 }

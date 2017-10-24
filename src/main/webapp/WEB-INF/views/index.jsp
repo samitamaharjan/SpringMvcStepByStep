@@ -7,6 +7,6 @@
 <title>Hello world!</title>
 </head>
 <body>
-	Hello from JSP!!
+	Hello ${user}!!
 </body>
 </html>
