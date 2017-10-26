@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hello world!</title>
+<title>Login</title>
 </head>
 <body>
 	<h1>Login</h1>
-	<form action="/welcome" method="post">
+	<form action="/login" method="post">
 		<table>
 			<tr>
 				<td>username </td>
