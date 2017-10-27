@@ -4,6 +4,6 @@
 	</head>
 	
 	<body>
-		Welcome to my first application!
+		Hello ${name}, ${message}.
 	</body>
 </html>

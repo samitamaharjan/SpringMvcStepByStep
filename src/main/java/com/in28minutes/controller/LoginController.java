@@ -1,12 +1,11 @@
 package com.in28minutes.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import service.AuthenticationService;
 
@@ -29,10 +28,10 @@ public class LoginController {
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String authenticate(HttpServletRequest request, HttpServletResponse response) {
-		String username = (String) request.getParameter("username"); // "username" should match with login.jsp input name
-		String password = (String) request.getParameter("password");
-		
+	public String authenticate(@RequestParam String username,
+			@RequestParam String password, ModelMap model) {
+		model.put("name", username);
+		model.put("message", "Welcome to our website");
 		boolean isValid = AuthenticationService.isValidUser(username, password);
 		if (isValid) {
 			return "welcome";
