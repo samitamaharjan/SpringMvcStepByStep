@@ -9,7 +9,10 @@
 <title>Todo</title>
 </head>
 <body>
-	Welcome to Todo page!
+	<form action="/todo" method="post">
+		<input type="text" name="description">
+		<input type="submit" value="Add Todo">
+	</form>
 	<ol>
 		<c:forEach var="item" items="${todos}">
 			<li>${item.description}</li>

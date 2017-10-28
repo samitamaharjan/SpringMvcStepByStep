@@ -1,12 +1,16 @@
 package com.in28minutes.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.in28minutes.model.Todo;
 import com.in28minutes.service.TodoService;
@@ -23,5 +27,12 @@ public class ToDoController {
 		model.put("todos", todos);
 		
 		return "todo";
+	}
+	
+	@RequestMapping(value="/todo", method=RequestMethod.POST)
+	public void saveTodo(@RequestParam String description, HttpServletResponse response) throws IOException {
+		Todo todo = new Todo(description);
+		todoService.create(todo);
+		response.sendRedirect("todo");
 	}
 }
