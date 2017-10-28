@@ -12,7 +12,7 @@
 	Welcome to Todo page!
 	<ol>
 		<c:forEach var="item" items="${todos}">
-			<li>${item}</li>
+			<li>${item.description}</li>
 		</c:forEach>
 	</ol>
 </body>

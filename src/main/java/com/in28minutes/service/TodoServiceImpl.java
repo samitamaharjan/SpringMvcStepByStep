@@ -5,19 +5,25 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.in28minutes.model.Todo;
+
 @Service
 public class TodoServiceImpl implements TodoService {
 
 	@Override
-	public List<String> getTodos() {
-		List<String> list = new ArrayList<>();
-		list.add("Eyedrop");
-		list.add("Broom");
-		list.add("Tissue paper");
-		list.add("Bowl cleaner");
-		list.add("medicine for flu");
-		list.add("Markers");
+	public List<Todo> getTodos() {
+		List<Todo> list = new ArrayList<>();
+		Todo todo1 = new Todo("Eyedrop");
+		Todo todo2 = new Todo("Broom");
+		Todo todo3 = new Todo("Tissue paper");
+		Todo todo4 = new Todo("Medicine for flu");
+		Todo todo5 = new Todo("Markers");
+		
+		list.add(todo1);
+		list.add(todo2);
+		list.add(todo3);
+		list.add(todo4); 
+		list.add(todo5);
 		return list;
 	}
-	
 }

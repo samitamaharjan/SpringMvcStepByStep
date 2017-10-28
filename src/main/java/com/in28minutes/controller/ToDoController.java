@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.in28minutes.model.Todo;
 import com.in28minutes.service.TodoService;
 
 @Controller
@@ -18,8 +19,9 @@ public class ToDoController {
 	
 	@RequestMapping(value="/todo", method=RequestMethod.GET)
 	public String getAllToDos(ModelMap model) {
-		List<String> todos = todoService.getTodos();
+		List<Todo> todos = todoService.getTodos();
 		model.put("todos", todos);
+		
 		return "todo";
 	}
 }
