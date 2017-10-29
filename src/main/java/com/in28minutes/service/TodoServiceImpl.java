@@ -1,47 +1,37 @@
 package com.in28minutes.service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.in28minutes.model.Todo;
+import com.in28minutes.repository.FileManager;
 
 @Service
 public class TodoServiceImpl implements TodoService {
 	
-	private static List<Todo> list = new ArrayList<>();
+	@Autowired
+	FileManager<Todo> fileManager;
 
 	@Override
 	public void create(Todo todo) {
 		if (todo == null) return;
-		list.add(todo);
+		fileManager.insert(todo);
 	}
 
 	@Override
 	public List<Todo> getTodos() {
-		return list;
+		return fileManager.findAll();
 	}
 
 	@Override
 	public Todo getTodoById(String id) {
-		for (Todo todo : list) {
-			if (todo.getId().equals(id)) {
-				return todo;
-			}
-		}
-		return null;
+		return fileManager.findByPrimaryKey(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		Iterator<Todo> it = list.iterator();
-		while (it.hasNext()) {
-			Todo todo = it.next();
-			if (todo.getId().equals(id)) {
-				it.remove();
-			}
-		}
+		fileManager.delete(id);
 	}
 }
