@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.in28minutes.model.Todo;
 import com.in28minutes.service.TodoService;
@@ -21,6 +22,11 @@ public class ToDoController {
 		
 	@Autowired
 	private TodoService todoService;
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public void home(HttpServletResponse response) throws IOException {
+		response.sendRedirect("/todos");
+	}
 	
 	@RequestMapping(value="/todos", method=RequestMethod.GET)
 	public String getAllToDos(ModelMap model) {
