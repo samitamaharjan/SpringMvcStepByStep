@@ -6,9 +6,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Todo</title>
+<title>Todos</title>
 </head>
 <body>
-	${todo.description}
+	<form action="/todo" method="post">
+		<input type="text" name="description"> 
+		<input type="submit" value="Add Todo">
+	</form>
+	<ol>
+		<c:forEach var="item" items="${todos}">
+			<li>
+				<a href="/todo/${item.id}" target="_blank">${item.description}</a>
+				-
+				<a href="/todo/delete/${item.id}">delete</a>
+			</li>
+		</c:forEach>
+	</ol>
 </body>
 </html>
