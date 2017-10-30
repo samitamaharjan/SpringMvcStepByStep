@@ -1,8 +1,13 @@
 package com.in28minutes.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Todo {
+import com.in28minutes.repository.PrimaryKey;
+
+public class Todo implements Serializable, PrimaryKey {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String id;
 	private String description;
@@ -24,5 +29,10 @@ public class Todo {
 
 	public boolean isDone() {
 		return done;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		return id;
 	}	
 }
